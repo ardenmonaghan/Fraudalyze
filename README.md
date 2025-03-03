@@ -12,11 +12,11 @@ transactions.csv: Contains information about transactions that have happened wit
 ## Directory Structure:
 
 ├── README.md                  # Project overview and documentation
-├── Dataset_Information.md    # ImportantDataset and Pipeline Information
-├── Analysis_Scripts          # 
-├── Streamlit_App             # Streamlit App
-├── Model_Development         # Model Development
-├── Fraud_Data          
+├── Dataset_Information.md    # Important Dataset and Pipeline Information
+├── Analysis_Scripts          # Scripts used for Data Analysis and Feature Engineering. 
+├── Streamlit_App             # Streamlit App for Data Visualization and Anomaly Detection that Users can interact with. 
+├── Model_Training            # Directory for all the scripts used to train the model predicting fraud claims. 
+├── Fraud_Data                # All the datasets both in csv and SQL. 
 
 ### Technical Stack
 - Python 3.10
