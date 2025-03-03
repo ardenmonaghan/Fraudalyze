@@ -3,8 +3,8 @@ import sqlite3
 from sqlalchemy import create_engine, Column, Integer, String, Float, MetaData, Table
 
 
-def csv_to_sql(csv_file_path, connection_string, table_name):
-    ''' Read a pandas dataframe from a csv file and insert it into a sql table.'''
+def csv_to_sql(csv_file_path, connection_string, table_name, table_initalization_query):
+    ''' Reads the csv file and puts it into the sql table.'''
 
     print(f"Reading csv file from {csv_file_path}")
     df = pd.read_csv(csv_file_path)
@@ -12,21 +12,7 @@ def csv_to_sql(csv_file_path, connection_string, table_name):
     database = sqlite3.connect(connection_string)
     cursor = database.cursor()
 
-    # Creating the ins_l table for SQL if it doesn't exist
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS ins_l (
-        Cust_ID TEXT PRIMARY KEY,
-        Date TEXT,
-        Type TEXT,
-        Reward_R INTEGER,
-        Reward_A INTEGER,
-        diff INTEGER,
-        Cov_Limit INTEGER,
-        Income INTEGER,
-        Cov_Income_Ratio REAL,
-        fraud_flag INTEGER
-    )
-''')
+    cursor.execute(table_initalization_query)
     database.commit()
 
     print(f"Connected to database {connection_string}")
@@ -34,12 +20,15 @@ def csv_to_sql(csv_file_path, connection_string, table_name):
     # If exists = false, if it exists, it will be overwritten.
     # index - False, dataframes index will not be written as a seperate column
 
-    if 'ID' in df.columns:
-        df.drop(columns=['ID'], inplace=True)
+    # Removed the unnamed 0 column from the dataframe
+    if 'Unnamed: 0' in df.columns:
+        df.drop(columns=['Unnamed: 0'], inplace=True)
 
-    df.to_sql('ins_l', database, if_exists='append', index=False)
+    df.to_sql(table_name, database, if_exists='append', index=False)
+
     # Read the data from the database
-    df_from_db = pd.read_sql_query('SELECT * FROM ins_l', database)
+    query = f"SELECT * FROM {table_name}"
+    df_from_db = pd.read_sql_query(query, database)
     print(df_from_db.head())
 
     database.close()
