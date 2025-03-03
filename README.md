@@ -1,31 +1,37 @@
 # Fraudalyze
 
-## Pipeline
+Fraudalyze is a Data Analytics project that Uses Both Machine Learning and Statistical Methodologies to detect Fraud Cases on a test dataset Customer Insurance Claims with other 40000 Users and 200000 Logged Claims for data points. Anamolies are detected and visualized onto streamlit.A Machine Learning model is also developed which takes in a set of customer information and predicts the probability of that case being a fraud case. 
 
-1. Load data into Pandas Dataframes and SQL Database
+## Dataset Information:
 
-2. Perform data cleaning for ins_l or ins_feat and standardize formats for inconsistent data
-- (Definition: Refining your dataset by correcting or removing erroneous data.
-Using SQL: Replacing NULL values  and Standardizing format)
+There are two major datasets operated on. 
 
-3. Feature Engineering: Creating new variables from raw data that help improve the models performance 
-- eg: Cov_Income_Ratio (Ratio of Cov_Limit and Income)
+customer_info.csv: This dataset contains information about the customers such as their income, coverage limit, and other relevant information.
+transactions.csv: Contains information about transactions that have happened with a current user and their income, coverage limit, and Reward information for their account.
 
-4. Exploratory Data Analysis (EDA) & Visualization 
-- Process of summarizing the main characteristics of the datasets, providing statistics and key visualizations 
-- Descriptive Statistics (Calculating Averages, Medians, Variances)
-- Correlations (Determining Relationships between features)
-- Data Visualization (Graphically representing data using histograms scatterplots and boxplots to identify trends (Can be done with matplotlib and streamlit))
+## Directory Structure:
 
-5. Anamoly Detecttion using kNN or Isolation Forest 
-- Integrated by first Data Cleaning and Data engeineering 
-- Exploring it into python and using sklearn. 
-- This can be inputted for fraud detection model.
+├── README.md                  # Project overview and documentation
+├── Dataset_Information.md    # ImportantDataset and Pipeline Information
+├── Analysis_Scripts          # 
+├── Streamlit_App             # Streamlit App
+├── Model_Development         # Model Development
+├── Fraud_Data          
 
-5. Supervised Learning Model Deployment:
-- Feature selection
-- Train test split
-- Model training (using a model like Logistic Regression or Random Forest)
+### Technical Stack
+- Python 3.10
+- SQLite
+
+### Libraries Used
+- Scikit Learn
+- Pandas
+- Streamlit
+- Matplotlib
+- Numpy
+
+## Requirements
+
+
 
 
 
