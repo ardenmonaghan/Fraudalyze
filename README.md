@@ -1,5 +1,5 @@
 # Fraudalyze
-![Fraudalyze Logo](images/Fraudalyze.png)
+![Fraudalyze Logo](images/Fraudalyze_logo.png)
 
 Fraudalyze is a data analytics project that leverages machine learning and statistical methodologies to detect fraudulent insurance claims. The project operates on a test dataset containing 40,000 users and 200,000 logged claims, identifying anomalies and visualizing them using Streamlit.
 
